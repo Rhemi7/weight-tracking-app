@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "971021436314",
+    "firebase_url": "https://logistics-tracking-app-af88d.firebaseio.com",
+    "project_id": "logistics-tracking-app-af88d",
+    "storage_bucket": "logistics-tracking-app-af88d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971021436314:android:33dac26c12d12694db2623",
+        "android_client_info": {
+          "package_name": "com.greenmily.logisticstrackerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971021436314-22bqhajoje4uicn95qa9m5tsbdutjhhm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxVxM9GJiU69w-ZQMPgUEoIPml6g_ykLk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971021436314-22bqhajoje4uicn95qa9m5tsbdutjhhm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
