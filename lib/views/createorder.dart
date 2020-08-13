@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:logisticstrackerapp/constants.dart';
-import 'database.dart';
+import 'package:logisticstrackerapp/model/order_details.dart';
+import '../database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'shipperscreen.dart';
+import '../shipperscreen.dart';
 import 'signup.dart';
 
 class CreateOrderScreen extends StatefulWidget {
@@ -34,17 +35,19 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
     }
   }
 
-  String shipper;
-  String currentDate;
-  String prodType;
-  String prodDesc;
-  String dispatchDate;
-  String deliveryDate;
-  String recipientName;
-  String dispatchLoc;
-  String deliveryLoc;
-  String currentLoc;
-  String status;
+  TextEditingController shipperController = TextEditingController();
+  TextEditingController currentDateController = TextEditingController();
+  TextEditingController prodTypeController = TextEditingController();
+  TextEditingController prodDescController = TextEditingController();
+  TextEditingController dispatchDateController = TextEditingController();
+  TextEditingController deliveryDateController = TextEditingController();
+  TextEditingController recipientNameController = TextEditingController();
+  TextEditingController dispatchLocController = TextEditingController();
+  TextEditingController deliveryLocController = TextEditingController();
+  TextEditingController currentLocController = TextEditingController();
+  TextEditingController statusController = TextEditingController();
+
+
 
 //  void getOrder() async {
 //    final orderDetails =
@@ -63,8 +66,17 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
     }
   }
 
+
+
   @override
   Widget build(BuildContext context) {
+    OrderDetails order = OrderDetails();
+    order.shipper = shipperController.text;
+    order.prodType = prodTypeController.text;
+    order.prodDesc = prodDescController.text;
+    order.dispatchDate = dispatchDateController.text;
+    order.dispatchLoc = dispatchLocController.text;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Create Order'),
@@ -79,30 +91,33 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
               child: ListView(
                 children: <Widget>[
                   TextField(
-                    onChanged: (value) {
-                      shipper = value;
-                      print(shipper);
-                    },
+//                    onChanged: (value) {
+//                      shipper = value;
+//                      print(shipper);
+//                    },
+                  controller: shipperController,
                     obscureText: false,
                     decoration:
                         kTextFieldDecoration.copyWith(labelText: "Shipper"),
                   ),
                   SizedBox(height: 8.0),
                   TextField(
-                    onChanged: (value) {
-                      prodType = value;
-                      print(prodType);
-                    },
+//                    onChanged: (value) {
+//                      prodType = value;
+//                      print(prodType);
+//                    },
+                  controller: prodTypeController,
                     obscureText: false,
                     decoration: kTextFieldDecoration.copyWith(
                         labelText: "Type of Product"),
                   ),
                   SizedBox(height: 8.0),
                   TextField(
-                    onChanged: (value) {
-                      prodDesc = value;
-                      print(prodDesc);
-                    },
+//                    onChanged: (value) {
+//                      prodDesc = value;
+//                      print(prodDesc);
+//                    },
+                  controller: prodDescController,
                     obscureText: false,
                     decoration: kTextFieldDecoration.copyWith(
                         labelText: "Product Description"),
@@ -110,10 +125,11 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
                   ),
                   SizedBox(height: 8.0),
                   TextField(
-                    onChanged: (value) {
-                      currentDate = value;
-                      print(currentDate);
-                    },
+//                    onChanged: (value) {
+//                      currentDate = value;
+//                      print(currentDate);
+//                    },
+                  controller: currentDateController,
                     obscureText: false,
                     decoration: kTextFieldDecoration.copyWith(
                         labelText: "Current Date"),
@@ -121,10 +137,11 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
                   ),
                   SizedBox(height: 8.0),
                   TextField(
-                    onChanged: (value) {
-                      dispatchDate = value;
-                      print(dispatchDate);
-                    },
+//                    onChanged: (value) {
+//                      dispatchDate = value;
+//                      print(dispatchDate);
+//                    },
+                  controller: dispatchDateController,
                     obscureText: false,
                     decoration: kTextFieldDecoration.copyWith(
                         labelText: "Dispatch Date"),
@@ -132,10 +149,11 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
                   ),
                   SizedBox(height: 8.0),
                   TextField(
-                    onChanged: (value) {
-                      deliveryDate = value;
-                      print(deliveryDate);
-                    },
+//                    onChanged: (value) {
+//                      deliveryDate = value;
+//                      print(deliveryDate);
+//                    },
+                  controller: deliveryDateController,
                     obscureText: false,
                     decoration: kTextFieldDecoration.copyWith(
                         labelText: "Expected Date of Delivery"),
@@ -143,20 +161,22 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
                   ),
                   SizedBox(height: 8.0),
                   TextField(
-                    onChanged: (value) {
-                      recipientName = value;
-                      print(recipientName);
-                    },
+//                    onChanged: (value) {
+//                      recipientName = value;
+//                      print(recipientName);
+//                    },
+    controller: recipientNameController,
                     obscureText: false,
                     decoration: kTextFieldDecoration.copyWith(
                         labelText: "Name of Recipient"),
                   ),
                   SizedBox(height: 8.0),
                   TextField(
-                    onChanged: (value) {
-                      dispatchLoc = value;
-                      print(dispatchLoc);
-                    },
+//                    onChanged: (value) {
+//                      dispatchLoc = value;
+//                      print(dispatchLoc);
+//                    },
+    controller: dispatchLocController,
                     obscureText: false,
                     decoration: kTextFieldDecoration.copyWith(
                         labelText: "Dispatch Location"),
@@ -164,21 +184,23 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
                   ),
                   SizedBox(height: 8.0),
                   TextField(
-                    onChanged: (value) {
-                      deliveryLoc = value;
-                      print(deliveryLoc);
-                    },
+//                    onChanged: (value) {
+//                      deliveryLoc = value;
+//                      print(deliveryLoc);
+//                    },
+    controller: deliveryLocController,
                     obscureText: false,
                     decoration: kTextFieldDecoration.copyWith(
-                        labelText: "Delivery Location"),
+                        labelText: "Delivery Date"),
                     keyboardType: TextInputType.multiline,
                   ),
                   SizedBox(height: 8.0),
                   TextField(
-                    onChanged: (value) {
-                      currentLoc = value;
-                      print(currentLoc);
-                    },
+//                    onChanged: (value) {
+//                      currentLoc = value;
+//                      print(currentLoc);
+//                    },
+    controller: currentLocController,
                     obscureText: false,
                     decoration: kTextFieldDecoration.copyWith(
                         labelText: "Current Location"),
@@ -186,10 +208,11 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
                   ),
                   SizedBox(height: 8.0),
                   TextField(
-                    onChanged: (value) {
-                      status = value;
-                      print(status);
-                    },
+//                    onChanged: (value) {
+//                      status = value;
+//                      print(status);
+//                    },
+    controller: statusController,
                     obscureText: false,
                     decoration: kTextFieldDecoration.copyWith(
                         labelText: "Delivery Status"),
@@ -204,19 +227,7 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
               child: FlatButton(
                 color: Colors.green,
                 onPressed: () {
-                  _firestore.collection('Order Details').add({
-                    'shipper': shipper,
-                    'prodType': prodType,
-                    'prodDesc': prodDesc,
-                    'dispatchDate': dispatchDate,
-                    'deliveryDate': deliveryDate,
-                    'recipientName': recipientName,
-                    'dispatchLoc': dispatchLoc,
-                    'deliveryLoc': deliveryLoc,
-                    'currentLoc': currentLoc,
-                    'deliveryStatus': status,
-                    'currentDate': currentDate
-                  });
+                  _firestore.collection('Order Details').add({order.toJson()});
 //                Map orderDetails = {
 //                  'Shipper': shipper,
 //                  'Product Type': prodType,

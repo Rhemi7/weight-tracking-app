@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:logisticstrackerapp/choicescreen.dart';
+import 'file:///C:/Users/Adele%20Fatai/AndroidStudioProjects/FlutterProjects/logistics_tracker_app/lib/views/choicescreen.dart';
 import 'package:logisticstrackerapp/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logisticstrackerapp/shipperscreen.dart';
@@ -211,6 +211,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       padding: EdgeInsets.all(8.0),
                       child: FlatButton(
                         color: Colors.blueGrey,
+                        shape: RoundedRectangleBorder(),
                         child: Text(
                           'PROCEED TO LOGIN',
                           style: TextStyle(

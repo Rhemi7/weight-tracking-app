@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:logisticstrackerapp/constants.dart';
-import 'package:logisticstrackerapp/shipperlogin.dart';
+import 'file:///C:/Users/Adele%20Fatai/AndroidStudioProjects/FlutterProjects/logistics_tracker_app/lib/views/shipperlogin.dart';
 import 'package:logisticstrackerapp/shipperscreen.dart';
-import 'package:logisticstrackerapp/signup.dart';
+import 'file:///C:/Users/Adele%20Fatai/AndroidStudioProjects/FlutterProjects/logistics_tracker_app/lib/views/signup.dart';
 
 class ChoiceScreen extends StatefulWidget {
   @override

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'choicescreen.dart';
+import 'views/choicescreen.dart';
 
 void main() => runApp(MyApp());
 
