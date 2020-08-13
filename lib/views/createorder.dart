@@ -47,8 +47,6 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
   TextEditingController currentLocController = TextEditingController();
   TextEditingController statusController = TextEditingController();
 
-
-
 //  void getOrder() async {
 //    final orderDetails =
 //        await _firestore.collection('Order Details').getDocuments();
@@ -66,16 +64,20 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
     }
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     OrderDetails order = OrderDetails();
+
     order.shipper = shipperController.text;
     order.prodType = prodTypeController.text;
     order.prodDesc = prodDescController.text;
     order.dispatchDate = dispatchDateController.text;
     order.dispatchLoc = dispatchLocController.text;
+    order.deliveryDate = deliveryDateController.text;
+    order.deliveryLoc = deliveryDateController.text;
+    order.recipientName = recipientNameController.text;
+    order.currentLoc = currentLocController.text;
+    order.deliveryStatus = statusController.text;
 
     return Scaffold(
       appBar: AppBar(
@@ -95,7 +97,7 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
 //                      shipper = value;
 //                      print(shipper);
 //                    },
-                  controller: shipperController,
+                    controller: shipperController,
                     obscureText: false,
                     decoration:
                         kTextFieldDecoration.copyWith(labelText: "Shipper"),
@@ -106,7 +108,7 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
 //                      prodType = value;
 //                      print(prodType);
 //                    },
-                  controller: prodTypeController,
+                    controller: prodTypeController,
                     obscureText: false,
                     decoration: kTextFieldDecoration.copyWith(
                         labelText: "Type of Product"),
@@ -117,7 +119,7 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
 //                      prodDesc = value;
 //                      print(prodDesc);
 //                    },
-                  controller: prodDescController,
+                    controller: prodDescController,
                     obscureText: false,
                     decoration: kTextFieldDecoration.copyWith(
                         labelText: "Product Description"),
@@ -129,7 +131,7 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
 //                      currentDate = value;
 //                      print(currentDate);
 //                    },
-                  controller: currentDateController,
+                    controller: currentDateController,
                     obscureText: false,
                     decoration: kTextFieldDecoration.copyWith(
                         labelText: "Current Date"),
@@ -141,7 +143,7 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
 //                      dispatchDate = value;
 //                      print(dispatchDate);
 //                    },
-                  controller: dispatchDateController,
+                    controller: dispatchDateController,
                     obscureText: false,
                     decoration: kTextFieldDecoration.copyWith(
                         labelText: "Dispatch Date"),
@@ -153,7 +155,7 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
 //                      deliveryDate = value;
 //                      print(deliveryDate);
 //                    },
-                  controller: deliveryDateController,
+                    controller: deliveryDateController,
                     obscureText: false,
                     decoration: kTextFieldDecoration.copyWith(
                         labelText: "Expected Date of Delivery"),
@@ -165,7 +167,7 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
 //                      recipientName = value;
 //                      print(recipientName);
 //                    },
-    controller: recipientNameController,
+                    controller: recipientNameController,
                     obscureText: false,
                     decoration: kTextFieldDecoration.copyWith(
                         labelText: "Name of Recipient"),
@@ -176,7 +178,7 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
 //                      dispatchLoc = value;
 //                      print(dispatchLoc);
 //                    },
-    controller: dispatchLocController,
+                    controller: dispatchLocController,
                     obscureText: false,
                     decoration: kTextFieldDecoration.copyWith(
                         labelText: "Dispatch Location"),
@@ -188,7 +190,7 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
 //                      deliveryLoc = value;
 //                      print(deliveryLoc);
 //                    },
-    controller: deliveryLocController,
+                    controller: deliveryLocController,
                     obscureText: false,
                     decoration: kTextFieldDecoration.copyWith(
                         labelText: "Delivery Date"),
@@ -200,7 +202,7 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
 //                      currentLoc = value;
 //                      print(currentLoc);
 //                    },
-    controller: currentLocController,
+                    controller: currentLocController,
                     obscureText: false,
                     decoration: kTextFieldDecoration.copyWith(
                         labelText: "Current Location"),
@@ -212,7 +214,7 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
 //                      status = value;
 //                      print(status);
 //                    },
-    controller: statusController,
+                    controller: statusController,
                     obscureText: false,
                     decoration: kTextFieldDecoration.copyWith(
                         labelText: "Delivery Status"),
@@ -227,7 +229,7 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
               child: FlatButton(
                 color: Colors.green,
                 onPressed: () {
-                  _firestore.collection('Order Details').add({order.toJson()});
+                  _firestore.collection('Order Details').add(order.toJson());
 //                Map orderDetails = {
 //                  'Shipper': shipper,
 //                  'Product Type': prodType,
