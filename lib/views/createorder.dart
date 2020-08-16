@@ -4,7 +4,7 @@ import 'package:logisticstrackerapp/model/order_details.dart';
 import '../database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../shipperscreen.dart';
+import 'shipperscreen.dart';
 import 'signup.dart';
 
 class CreateOrderScreen extends StatefulWidget {

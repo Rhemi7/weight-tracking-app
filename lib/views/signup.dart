@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/Adele%20Fatai/AndroidStudioProjects/FlutterProjects/logistics_tracker_app/lib/views/choicescreen.dart';
+import 'choicescreen.dart';
 import 'package:logisticstrackerapp/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:logisticstrackerapp/shipperscreen.dart';
+import 'file:///C:/Users/Adele%20Fatai/AndroidStudioProjects/FlutterProjects/logistics-tracker/lib/views/shipperscreen.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class SignUpPage extends StatefulWidget {

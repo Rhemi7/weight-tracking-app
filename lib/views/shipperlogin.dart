@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:logisticstrackerapp/constants.dart';
-import 'file:///C:/Users/Adele%20Fatai/AndroidStudioProjects/FlutterProjects/logistics_tracker_app/lib/views/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../shipperscreen.dart';
+import 'shipperscreen.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+
+import 'signup.dart';
 
 class ShipperLogin extends StatefulWidget {
   @override
