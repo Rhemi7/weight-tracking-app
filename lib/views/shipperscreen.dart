@@ -114,62 +114,6 @@ class _ShipperDashboardState extends State<ShipperDashboard> {
                 ],
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: 20.0),
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.add,
-                          size: 50.0,
-                        ),
-                        onPressed: () async {
-                          var orderSummary = await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => CreateOrderScreen(),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 8.0,
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: 20.0),
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.edit,
-                          size: 50.0,
-                        ),
-                        onPressed: () {},
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 8.0,
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: 20.0),
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.delete,
-                          size: 50.0,
-                        ),
-                        onPressed: () {},
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
           ],
         ),
       ),
