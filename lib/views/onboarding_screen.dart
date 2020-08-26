@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:logisticstrackerapp/Theme/appThemeData.dart';
 import 'package:logisticstrackerapp/routes/routes.dart';
+import 'package:logisticstrackerapp/services/auth_services.dart';
 import 'package:logisticstrackerapp/size_config/config.dart';
+import 'package:provider/provider.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   @override
@@ -33,7 +35,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 child: FlatButton(
                   color: appThemeData.primaryColor,
                   onPressed: () {
-                    Navigator.pushNamed(context, RouteNames.homeScreen);
+                    try {
+                      Provider.of<AuthServices>(context, listen: false)
+                          .signInAnonymously();
+                      Navigator.pushNamed(context, RouteNames.homeScreen);
+                    } catch (e) {
+                      print(e);
+                    }
                   },
                   child: Text(
                     'SIGN IN ANONYMOUSLY',
@@ -70,14 +78,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ),
                 ),
               ),
-//              RaisedButton(
-//                  color: Colors.green,
-//                  child: Text(
-//                    'LOGIN AS RECIPIENT',
-//                    textAlign: TextAlign.center,
-//                    style: TextStyle(fontSize: 20.0, color: Colors.black),
-//                  ),
-//                  onPressed: () {}),
+
               SizedBox(height: 10.0),
               Text(
                 'Or, Don\'t Have An Account?',
