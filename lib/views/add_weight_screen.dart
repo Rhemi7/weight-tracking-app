@@ -12,7 +12,10 @@ class AddWeightScreen extends StatefulWidget {
 }
 
 class _AddWeightScreenState extends State<AddWeightScreen> {
+  // access to firestore
   final db = Firestore.instance;
+
+  // spinner is initialised to false whenever screen is built
   bool showSpinner = false;
 
   TextEditingController weightController = TextEditingController();
@@ -26,12 +29,13 @@ class _AddWeightScreenState extends State<AddWeightScreen> {
         child: Column(
           children: [
             Text(
-              'Add your weight',
+              'Add your weight (KG)',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: Config.textSize(context, 7)),
             ),
             TextField(
+              // this makes the keyboard type to be numbers
               keyboardType: TextInputType.number,
               controller: weightController,
               autofocus: true,
@@ -48,22 +52,26 @@ class _AddWeightScreenState extends State<AddWeightScreen> {
               child: FlatButton(
                 color: appThemeData.primaryColor,
                 onPressed: () async {
+                  // this assigns the respective properties of the newWeight object created
                   WeightDetails newWeight = WeightDetails(
                     weight: int.parse(weightController.text),
                     date: DateTime.now(),
                   );
 
+                  // this starts the spinner
                   setState(() {
                     showSpinner = true;
                   });
 
                   try {
+                    // function to add data to firestore, it navigates to the homescreen when process is complete and shows weightcard
                     await db
                         .collection("Weight Details")
                         .add(newWeight.toJson());
 
                     Navigator.pushNamed(context, RouteNames.homeScreen);
 
+                    // this stops the spinner
                     setState(() {
                       showSpinner = false;
                     });

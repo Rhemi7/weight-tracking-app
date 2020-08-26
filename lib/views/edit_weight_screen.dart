@@ -18,6 +18,7 @@ class _EditWeightScreenState extends State<EditWeightScreen> {
   // Access to cloud firestore
   final db = Firestore.instance;
 
+  // spinner to show activity is going on
   bool showSpinner = false;
 
   TextEditingController weightController = TextEditingController();
@@ -25,6 +26,8 @@ class _EditWeightScreenState extends State<EditWeightScreen> {
   @override
   void initState() {
     super.initState();
+    // this init function passes the value of the object's weight to the textfield
+
     weightController.text = widget.weightToEdit.weight.toString();
   }
 
@@ -32,6 +35,7 @@ class _EditWeightScreenState extends State<EditWeightScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        // ModalProgressHud is package for spinner
         body: ModalProgressHUD(
           inAsyncCall: showSpinner,
           child: Container(
@@ -72,6 +76,8 @@ class _EditWeightScreenState extends State<EditWeightScreen> {
                       });
 
                       try {
+                        // functionality to edit data in firestore using the unique documentID
+
                         await db
                             .collection("Weight Details")
                             .document(widget.weightToEdit.documentId)

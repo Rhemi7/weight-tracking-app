@@ -36,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: appThemeData.primaryColor,
         child: Icon(Icons.add),
         onPressed: () {
+          // pressing this button brings up a buttom sheet which is the add weight screen
           showModalBottomSheet(context: context, builder: buildBottomSheet);
         },
       ),
@@ -50,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
               style: TextStyle(fontSize: 20),
             ),
           ),
+          // Tap this button to signout
           IconButton(
               icon: Icon(
                 Icons.exit_to_app,
@@ -67,9 +69,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: Container(
+        // the stream builder is used to update the UI of the application in real time, snapshots are used for streams
         child: StreamBuilder(
             stream: Firestore.instance
                 .collection("Weight Details")
+            // orderBy function is used to sort the data in firestore according to date and time
                 .orderBy("date")
                 .snapshots(),
             // ignore: missing_return
@@ -88,8 +92,11 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  // where bottomsheet calls the Add weight screen
   Widget buildBottomSheet(BuildContext context) => AddWeightScreen();
 }
+
+// widget created for the weight card that is updated on UI when a new weight is added
 
 Widget weightCard(BuildContext context, DocumentSnapshot document) {
   final weight = WeightDetails.fromSnapshot(document);
