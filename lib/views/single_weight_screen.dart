@@ -6,7 +6,10 @@ import 'package:logisticstrackerapp/size_config/config.dart';
 import 'package:logisticstrackerapp/views/edit_weight_screen.dart';
 
 class SingleWeightScreen extends StatelessWidget {
+  // singleWeightDetails is the object passed from the previous screen, it passes the object alongside the properties
   final WeightDetails singleWeightDetails;
+
+  // access to firestore
   final db = Firestore.instance;
 
   SingleWeightScreen({this.singleWeightDetails});
@@ -77,6 +80,7 @@ class SingleWeightScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () async {
+                      // this deletes data in firestore
                       await db
                           .collection("Weight Details")
                           .document(singleWeightDetails.documentId)

@@ -27,6 +27,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // this gives access to all the properties and function in the AuthServices class with provider architecture
     var authServices = Provider.of<AuthServices>(context);
     return GestureDetector(
       onTap: () {

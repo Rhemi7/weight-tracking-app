@@ -200,6 +200,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             setState(() {
                               showSpinner = true;
                             });
+                            // input are validated if they are the right format or not and user is signed in
                             try {
                               if (_formKey.currentState.validate()) {
                                 _formKey.currentState.save();
