@@ -1,6 +1,6 @@
 # weighttrackerapp
 
-A new Flutter application to track the logistics movement of products
+A new Flutter application to tracks the weight of a person
 
 ## Getting Started
 
