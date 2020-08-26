@@ -8,5 +8,4 @@ ThemeData appThemeData = ThemeData(
   backgroundColor: Color(0XFFFFFFFF),
   buttonColor: Colors.green,
   splashColor: Colors.green,
-  indicatorColor: Color(0xFFE5E5E5),
 );

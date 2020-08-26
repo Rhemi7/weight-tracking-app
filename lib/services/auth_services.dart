@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class AuthServices extends ChangeNotifier {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -12,12 +13,16 @@ class AuthServices extends ChangeNotifier {
 
   // GET UID
   Future<String> getCurrentUserID() async {
-    return (await _firebaseAuth.currentUser()).uid;
+    FirebaseUser user = await _firebaseAuth.currentUser();
+    notifyListeners();
+    return user.uid;
   }
 
   // GET CURRENT USER
   Future getCurrentUser() async {
-    return await _firebaseAuth.currentUser();
+    FirebaseUser user = await _firebaseAuth.currentUser();
+    notifyListeners();
+    return user;
   }
 
   // Email & Password Sign Up
@@ -49,7 +54,8 @@ class AuthServices extends ChangeNotifier {
         .uid;
   }
 
-  Future singInAnonymously() {
+  // Sign in anonymously
+  Future signInAnonymously() {
     return _firebaseAuth.signInAnonymously();
   }
 
