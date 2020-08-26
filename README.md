@@ -1,4 +1,4 @@
-# logisticstrackerapp
+# weighttrackerapp
 
 A new Flutter application to track the logistics movement of products
 
