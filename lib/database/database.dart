@@ -8,4 +8,12 @@ class Database extends ChangeNotifier {
   Future<void> addWeight(WeightDetails details) async {
     await db.collection("Weight Details").add(details.toJson());
   }
+
+  Future<void> editWeight(
+      {String documentID, String weight, DateTime date}) async {
+    await db.collection("Weight Details").document(documentID).updateData({
+      'weight': int.parse(weight),
+      'date': date,
+    });
+  }
 }
