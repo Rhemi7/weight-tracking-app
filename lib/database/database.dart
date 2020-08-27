@@ -16,4 +16,8 @@ class Database extends ChangeNotifier {
       'date': date,
     });
   }
+
+  Future<void> deleteWeight(String documentID) async {
+    await db.collection("Weight Details").document(documentID).delete();
+  }
 }
