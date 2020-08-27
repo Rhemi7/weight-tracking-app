@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:logisticstrackerapp/Theme/appThemeData.dart';
+import 'package:logisticstrackerapp/database/database.dart';
 import 'package:logisticstrackerapp/models/weight.dart';
 import 'package:logisticstrackerapp/routes/routes.dart';
 import 'package:logisticstrackerapp/size_config/config.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:provider/provider.dart';
 
 class AddWeightScreen extends StatefulWidget {
   @override
@@ -12,16 +14,20 @@ class AddWeightScreen extends StatefulWidget {
 }
 
 class _AddWeightScreenState extends State<AddWeightScreen> {
-  // access to firestore
-  final db = Firestore.instance;
+//  // access to firestore
+//  final db = Firestore.instance;
 
   // spinner is initialised to false whenever screen is built
   bool showSpinner = false;
 
   TextEditingController weightController = TextEditingController();
 
+
   @override
   Widget build(BuildContext context) {
+
+    var db = Provider.of<Database>(context);
+
     return ModalProgressHUD(
       inAsyncCall: showSpinner,
       child: Container(
@@ -65,9 +71,7 @@ class _AddWeightScreenState extends State<AddWeightScreen> {
 
                   try {
                     // function to add data to firestore, it navigates to the homescreen when process is complete and shows weightcard
-                    await db
-                        .collection("Weight Details")
-                        .add(newWeight.toJson());
+                    await db.addWeight(newWeight);
 
                     Navigator.pushNamed(context, RouteNames.homeScreen);
 
