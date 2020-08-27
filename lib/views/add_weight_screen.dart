@@ -14,18 +14,14 @@ class AddWeightScreen extends StatefulWidget {
 }
 
 class _AddWeightScreenState extends State<AddWeightScreen> {
-//  // access to firestore
-//  final db = Firestore.instance;
-
   // spinner is initialised to false whenever screen is built
   bool showSpinner = false;
 
   TextEditingController weightController = TextEditingController();
 
-
   @override
   Widget build(BuildContext context) {
-
+    // Database provider that feeds the add weight screen properties and functions from the database class
     var db = Provider.of<Database>(context);
 
     return ModalProgressHUD(

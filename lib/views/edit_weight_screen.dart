@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:logisticstrackerapp/Theme/appThemeData.dart';
+import 'package:logisticstrackerapp/database/database.dart';
 import 'package:logisticstrackerapp/models/weight.dart';
 import 'package:logisticstrackerapp/routes/routes.dart';
 import 'package:logisticstrackerapp/size_config/config.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:provider/provider.dart';
 
 class EditWeightScreen extends StatefulWidget {
   final WeightDetails weightToEdit;
@@ -15,8 +17,8 @@ class EditWeightScreen extends StatefulWidget {
 }
 
 class _EditWeightScreenState extends State<EditWeightScreen> {
-  // Access to cloud firestore
-  final db = Firestore.instance;
+//  // Access to cloud firestore
+//  final db = Firestore.instance;
 
   // spinner to show activity is going on
   bool showSpinner = false;
@@ -33,6 +35,7 @@ class _EditWeightScreenState extends State<EditWeightScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var db = Provider.of<Database>(context);
     return SafeArea(
       child: Scaffold(
         // ModalProgressHud is package for spinner
@@ -78,13 +81,10 @@ class _EditWeightScreenState extends State<EditWeightScreen> {
                       try {
                         // functionality to edit data in firestore using the unique documentID
 
-                        await db
-                            .collection("Weight Details")
-                            .document(widget.weightToEdit.documentId)
-                            .updateData({
-                          'weight': int.parse(weightController.text),
-                          'date': DateTime.now()
-                        });
+                        await db.editWeight(
+                            documentID: widget.weightToEdit.documentId,
+                            weight: weightController.text,
+                            date: DateTime.now());
 
                         Navigator.pushNamed(context, RouteNames.homeScreen);
 
