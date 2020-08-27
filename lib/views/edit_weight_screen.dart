@@ -36,6 +36,7 @@ class _EditWeightScreenState extends State<EditWeightScreen> {
   @override
   Widget build(BuildContext context) {
     var db = Provider.of<Database>(context);
+
     return SafeArea(
       child: Scaffold(
         // ModalProgressHud is package for spinner

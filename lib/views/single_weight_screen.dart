@@ -1,20 +1,23 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:logisticstrackerapp/Theme/appThemeData.dart';
+import 'package:logisticstrackerapp/database/database.dart';
 import 'package:logisticstrackerapp/models/weight.dart';
 import 'package:logisticstrackerapp/size_config/config.dart';
 import 'package:logisticstrackerapp/views/edit_weight_screen.dart';
+import 'package:provider/provider.dart';
 
 class SingleWeightScreen extends StatelessWidget {
   // singleWeightDetails is the object passed from the previous screen, it passes the object alongside the properties
   final WeightDetails singleWeightDetails;
 
-  // access to firestore
-  final db = Firestore.instance;
+//  // access to firestore
+//  final db = Firestore.instance;
 
   SingleWeightScreen({this.singleWeightDetails});
   @override
   Widget build(BuildContext context) {
+    var db = Provider.of<Database>(context);
+
     return SafeArea(
         child: Scaffold(
       body: Container(
@@ -81,10 +84,8 @@ class SingleWeightScreen extends StatelessWidget {
                   GestureDetector(
                     onTap: () async {
                       // this deletes data in firestore
-                      await db
-                          .collection("Weight Details")
-                          .document(singleWeightDetails.documentId)
-                          .delete();
+                      await db.deleteWeight(singleWeightDetails.documentId);
+
                       Navigator.pop(context);
                     },
                     child: Container(
